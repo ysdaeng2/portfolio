@@ -464,3 +464,399 @@ body.locked {
     filter: grayscale(0%);
     transform: scale(1.05);
 }
+
+/* Portfolio Projects Styling */
+.portfolio-project {
+    margin-top: 3.5rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2.5rem;
+}
+
+.project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.project-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text-color);
+}
+
+.project-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 2rem;
+    max-width: 90%;
+}
+
+/* Recipe Grid (4 columns on Desktop) */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.portfolio-media-item {
+    position: relative;
+    background-color: #f0eee9;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.recipe-item {
+    aspect-ratio: 4 / 5;
+}
+
+.single-project-media {
+    max-width: 480px;
+    width: 100%;
+}
+
+.single-poster {
+    aspect-ratio: 3 / 4;
+}
+
+.single-shampoo {
+    aspect-ratio: 1 / 1;
+}
+
+.shampoo-media-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.shampoo-video-wrapper {
+    aspect-ratio: 1 / 1;
+}
+
+.storybook-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.storybook-item {
+    aspect-ratio: 3 / 4;
+}
+
+.ppt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.ppt-item {
+    aspect-ratio: 16 / 9;
+}
+
+.carousel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 640px;
+}
+
+.recipe-img-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-media-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover effects */
+.portfolio-media-item:hover .recipe-img-wrapper {
+    transform: scale(1.05);
+}
+
+.portfolio-media-item:hover img {
+    filter: grayscale(0%);
+}
+
+.recipe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.recipe-overlay.flex-col {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.portfolio-media-item:hover .recipe-overlay {
+    opacity: 1;
+    background-color: rgba(26, 26, 26, 0.25);
+}
+
+.view-btn {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    background-color: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(2px);
+    transition: background-color 0.3s, transform 0.3s;
+    transform: translateY(10px);
+}
+
+.portfolio-media-item:hover .view-btn {
+    transform: translateY(0);
+    background-color: #1a1a1a;
+}
+
+.more-pages-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #FAF9F6;
+    background-color: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.3rem 0.6rem;
+    text-transform: uppercase;
+    transform: translateY(10px);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.portfolio-media-item:hover .more-pages-badge {
+    transform: translateY(0);
+    background-color: #1a1a1a;
+}
+
+/* Video Layout */
+.video-wrapper-custom {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.portfolio-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    line-height: 1;
+    z-index: 10010;
+}
+
+.lightbox-close:hover {
+    color: #ccc;
+    transform: rotate(90deg);
+}
+
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 2rem 1.5rem;
+    z-index: 10010;
+    transition: color 0.3s, opacity 0.3s;
+    opacity: 0.5;
+}
+
+.lightbox-btn:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.prev-btn {
+    left: 1rem;
+}
+
+.next-btn {
+    right: 1rem;
+}
+
+.lightbox-content-container {
+    max-width: 85%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    animation: zoomIn 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-caption {
+    margin-top: 1.5rem;
+    color: #FAF9F6;
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    font-weight: 400;
+    text-align: center;
+    max-width: 90%;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for Recipe Grid */
+@media (max-width: 900px) {
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .shampoo-media-container {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        gap: 1.2rem;
+    }
+    
+    .storybook-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .ppt-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .carousel-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        gap: 1.2rem;
+    }
+    
+    .project-desc {
+        max-width: 100%;
+    }
+    
+    .lightbox-btn {
+        padding: 1rem;
+        font-size: 2rem;
+    }
+    
+    .prev-btn {
+        left: 0.5rem;
+    }
+    
+    .next-btn {
+        right: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .storybook-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ppt-grid {
+        grid-template-columns: 1fr;
+    }
+}

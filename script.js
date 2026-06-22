@@ -127,4 +127,84 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Lightbox Logic for Recipe Cards (Project-scoped Navigation)
+    const lightbox = document.getElementById('recipe-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    const allMediaItems = Array.from(document.querySelectorAll('.portfolio-media-item'));
+    let currentProjectItems = [];
+    let currentIndex = 0;
+
+    const showImage = (index) => {
+        if (currentProjectItems.length === 0) return;
+        
+        if (index < 0) {
+            index = currentProjectItems.length - 1;
+        } else if (index >= currentProjectItems.length) {
+            index = 0;
+        }
+        currentIndex = index;
+        const item = currentProjectItems[currentIndex];
+        const src = item.getAttribute('data-src');
+        const caption = item.getAttribute('data-caption');
+        
+        lightboxImg.src = src;
+        lightboxCaption.innerText = caption;
+    };
+
+    allMediaItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const projectContainer = item.closest('.portfolio-project');
+            if (projectContainer) {
+                currentProjectItems = Array.from(projectContainer.querySelectorAll('.portfolio-media-item'));
+                const index = currentProjectItems.indexOf(item);
+                showImage(index);
+                lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Lock scrolling
+            }
+        });
+    });
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('show');
+        if (!document.body.classList.contains('locked')) {
+            document.body.style.overflow = ''; // Unlock scrolling
+        }
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-content-container')) {
+            closeLightbox();
+        }
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex + 1);
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('show')) return;
+        
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showImage(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+            showImage(currentIndex + 1);
+        }
+    });
 });
