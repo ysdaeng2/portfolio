@@ -145,15 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicPlayer = document.getElementById('music-player');
     if (musicPlayer && audio) {
         const playBtn = musicPlayer.querySelector('.play-btn');
-        const trackLabel = musicPlayer.querySelector('.track-label');
-
-        const updateLabel = () => {
-            const src = audio.currentSrc || (audio.querySelector('source') && audio.querySelector('source').getAttribute('src')) || 'Unknown';
-            const name = src.split('/').pop();
-            trackLabel.innerText = name;
-        };
-
-        updateLabel();
 
         playBtn.addEventListener('click', (e) => {
             e.stopPropagation();
