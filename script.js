@@ -128,6 +128,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Small visible music player hookup
+    const musicPlayer = document.getElementById('music-player');
+    if (musicPlayer && audio) {
+        const playBtn = musicPlayer.querySelector('.play-btn');
+        const trackLabel = musicPlayer.querySelector('.track-label');
+
+        const updateLabel = () => {
+            const src = audio.currentSrc || (audio.querySelector('source') && audio.querySelector('source').getAttribute('src')) || 'Unknown';
+            const name = src.split('/').pop();
+            trackLabel.innerText = name;
+        };
+
+        updateLabel();
+
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerText = '❚❚';
+                    isPlaying = true;
+                    if (soundToggle) soundToggle.innerText = 'SOUND: ON';
+                }).catch(err => console.log('Play failed', err));
+            } else {
+                audio.pause();
+                playBtn.innerText = '►';
+                isPlaying = false;
+                if (soundToggle) soundToggle.innerText = 'SOUND: OFF';
+            }
+        });
+
+        audio.addEventListener('play', () => playBtn.innerText = '❚❚');
+        audio.addEventListener('pause', () => playBtn.innerText = '►');
+    }
+
     // Lightbox Logic for Recipe Cards (Project-scoped Navigation)
     const lightbox = document.getElementById('recipe-lightbox');
     const lightboxImg = document.getElementById('lightbox-img');

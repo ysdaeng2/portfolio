@@ -38,14 +38,14 @@
         <aside class="left-pane">
             <h1 id="dynamic-title">SUYEON<br>YANG</h1>
             <div class="image-wrapper">
-                <img id="dynamic-image" src="./assets/profile.png" alt="Profile">
+                <img id="dynamic-image" src="./assets/hero.jpg" alt="Hero">
             </div>
         </aside>
 
         <!-- Right Pane (Scrollable Content) -->
         <div class="right-pane">
             
-            <section id="about" class="content-section active" data-title="SUYEON<br>YANG" data-image="./assets/profile.png">
+            <section id="about" class="content-section active" data-title="SUYEON<br>YANG" data-image="./assets/hero.jpg">
                 <p class="intro-text">
                     제주의 푸른 바다와 바람을 도화지 삼아 자란 제주도 소녀 양수연. 외동딸로 태어난 특권(?) 덕분일까요, 그녀는 태어나서 단 한 번도 '심심함'이라는 감정을 겪어본 적이 없습니다. 세상에는 호기심을 마구 자극하는 재밌는 일들이 발에 치이도록 무궁무진했거든요.
                 </p>
@@ -431,6 +431,12 @@
         <!-- 파일이 없거나 재생 불가능할 경우 안정적인 무료 음원 (대체) -->
         <source src="https://assets.mixkit.co/music/preview/mixkit-relaxing-light-music-304.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Visible music player (floating) -->
+    <div id="music-player" aria-hidden="false">
+        <button class="play-btn" aria-label="Play/Pause">►</button>
+        <span class="track-label">bgm.mp3</span>
+    </div>
 
     <!-- Lightbox Modal for Recipe Cards -->
     <div id="recipe-lightbox" class="lightbox-modal">
