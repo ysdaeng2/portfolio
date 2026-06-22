@@ -145,25 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicPlayer = document.getElementById('music-player');
     if (musicPlayer && audio) {
         const playBtn = musicPlayer.querySelector('.play-btn');
+        const playIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+        const pauseIcon = '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
 
         playBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (audio.paused) {
                 audio.play().then(() => {
-                    playBtn.innerText = '❚❚';
+                    playBtn.innerHTML = pauseIcon;
                     isPlaying = true;
                     if (soundToggle) soundToggle.innerText = 'SOUND: ON';
                 }).catch(err => console.log('Play failed', err));
             } else {
                 audio.pause();
-                playBtn.innerText = '►';
+                playBtn.innerHTML = playIcon;
                 isPlaying = false;
                 if (soundToggle) soundToggle.innerText = 'SOUND: OFF';
             }
         });
 
-        audio.addEventListener('play', () => playBtn.innerText = '❚❚');
-        audio.addEventListener('pause', () => playBtn.innerText = '►');
+        audio.addEventListener('play', () => playBtn.innerHTML = pauseIcon);
+        audio.addEventListener('pause', () => playBtn.innerHTML = playIcon);
     }
 
     // Lightbox Logic for Recipe Cards (Project-scoped Navigation)
