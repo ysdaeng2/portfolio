@@ -69,6 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
     const targetVolume = 0.3;
 
+    if (audio) {
+        audio.preload = 'auto';
+        audio.muted = false;
+        const sourceElement = audio.querySelector('source');
+        if (sourceElement) {
+            const src = sourceElement.getAttribute('src');
+            sourceElement.setAttribute('src', encodeURI(src));
+            audio.load();
+        }
+    }
+
     if (soundToggle && audio) {
         audio.volume = 0; // Start muted for fade-in
 
@@ -98,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
             introScreen.classList.add('hidden');
             document.body.classList.remove('locked');
             
+            audio.muted = false;
+            audio.currentTime = 0;
             audio.volume = 0;
             audio.play().then(() => {
                 isPlaying = true;
